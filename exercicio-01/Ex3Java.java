@@ -1,4 +1,4 @@
-﻿public class Ex3Java{
+public class Ex3Java{
 	public static void main(String[] args){
 		
 		if(args[0]=="1"){
