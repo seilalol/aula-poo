@@ -5,7 +5,7 @@ public class Ex2Java{
 
 
 
-	public static void main(String args[]){
+	public static void main(String Args[]){
 		
 		if(Args[0]=='2'){
 					System.out.println("Segunda.");
