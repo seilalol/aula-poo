@@ -1,7 +1,8 @@
 public class Ex2Java{public static void main(String Args[]){
 		
-		int n = Integer.parsetoInteger(Args[0]);
+		int n = Integer.parseInt(Args[0]);
 		
+		if(n<8 && n>0){
 		if(n==2){
 					System.out.println("Segunda.");
 				}
@@ -23,6 +24,7 @@ public class Ex2Java{public static void main(String Args[]){
 		if(n==1){
 					System.out.println("Domingo.");
 				}
+		}
 		else{
 			System.out.println("Numero invalido.");
 		}

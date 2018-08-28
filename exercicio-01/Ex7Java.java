@@ -1,4 +1,4 @@
-
+import javax.swing.JOptionPane;
 public class Ex7Java{
 	public static void main(String args[]){
 		int i = 0;
@@ -20,6 +20,6 @@ public class Ex7Java{
         }else{
             Situacao = "Reprovado.";
         }
-        JOptionPane.showMessageDialog(null, "Nome do aluno: " + nome + "\nMédia: " + (soma/3) + "\nSituacao: " + Situacao);
+        JOptionPane.showMessageDialog(null, "Nome do aluno: " + nome + "\nMedia: " + (soma/3) + "\nSituacao: " + Situacao);
     }
 }
