@@ -3,22 +3,37 @@ package pkg01.geradorprova;
 public class Prova {
 
     //Atributos:
-    private String nomeDiscplina;
+    private String nomeDisciplina;
     private int peso;
     private String local;
     private String data;
+    private Objetiva[] obj; 
+    private Discursiva[] Dir; 
+
+    public Objetiva[] getObj() {
+        return obj;
+    }
+
+    public void setObj(Objetiva[] obj) {
+        this.obj = obj;
+    }
+
+    public Discursiva[] getDir() {
+        return Dir;
+    }
+
+    public void setDir(Discursiva[] Dir) {
+        this.Dir = Dir;
+    }
 
     //Construtores:
-    public Prova(String nomeDisciplina) {
-        this.setNomeDiscplina(nomeDisciplina);
-        this.setPeso(10);
-    }
+    public Prova() {}
 
     //Metodos:
     public String obtemDetalhes() {
 
         String detalhes = "";
-        detalhes += "Disciplina: " + this.getNomeDiscplina() + "\n";
+        detalhes += "Disciplina: " + this.getNomeDisciplina() + "\n";
         detalhes += "Data: " + this.getData() + "\n";
         detalhes += "Local: " + this.getLocal() + "\n";
         detalhes += "Peso: " + this.getPeso() + "\n";
@@ -27,12 +42,12 @@ public class Prova {
     }
 
     //Getters e Setters:
-    public String getNomeDiscplina() {
-        return nomeDiscplina;
+    public String getNomeDisciplina() {
+        return nomeDisciplina;
     }
 
-    public void setNomeDiscplina(String nomeDiscplina) {
-        this.nomeDiscplina = nomeDiscplina;
+    public void setNomeDisciplina(String nomeDiscplina) {
+        this.nomeDisciplina = nomeDiscplina;
     }
 
     public int getPeso() {
