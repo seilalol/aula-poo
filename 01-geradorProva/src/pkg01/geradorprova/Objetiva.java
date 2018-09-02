@@ -8,7 +8,6 @@ public final class Objetiva extends Questao {
 
     //Construtores:
     public Objetiva() {
-        this.opcoes = new String[5];
     }
 
     //Getters e Setters:
