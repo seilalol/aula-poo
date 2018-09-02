@@ -187,10 +187,6 @@ public class GeradorProva {
                 }
             }
 
-            for (int op = 0; op < 5; op++) {
-                System.out.println("Teste" + opcoes[op]);
-            }
-
             QuestoesObj[cont].setPergunta(pergunta);
             QuestoesObj[cont].setOpcoes(opcoes);
             QuestoesObj[cont].setRespotaCorreta(opCerta);
