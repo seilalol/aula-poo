@@ -1,8 +1,9 @@
 package pkg01.geradorprova;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class GeradorProva {
 
@@ -137,12 +138,12 @@ public class GeradorProva {
         }
         Objetiva QuestoesObj[] = new Objetiva[qtdObj];//Cria um vetor de questoes discursivas
 
-        for (int cont = 0; cont < qtdDis; cont++) {
+        for (int cont = 0; cont < qtdObj; cont++) {
             QuestoesObj[cont] = new Objetiva(); //Constroi o vetor
             String pergunta = null;
             String[] opcoes = new String[5];
             double pesoO = 0;
-            int opCerta = 0;
+            int opCerta = -1;
 
             certo = false;
             while (!certo) {
@@ -166,7 +167,7 @@ public class GeradorProva {
                     }
                 }
             }
-            while (opCerta <= 0 || opCerta > 5) {
+            while (opCerta < 0 || opCerta > 5) {
                 System.out.println("Digite qual a alternativa correta da questao(" + (cont + 1) + "):");
                 try {
                     opCerta = scan.nextInt() - 1;
@@ -196,7 +197,7 @@ public class GeradorProva {
 
         prova1.setObj(QuestoesObj);
 
-        System.out.println("" + prova1.obtemDetalhes());
+        System.out.println("" + prova1.provaObtemImpressao());
 
     }
 
