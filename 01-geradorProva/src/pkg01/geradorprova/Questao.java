@@ -5,6 +5,8 @@ abstract class Questao {
     //Atributos:
     private String pergunta;
     private double peso;
+    
+    abstract String retornaQuestao();
 
     public String getPergunta() {
         return pergunta;
