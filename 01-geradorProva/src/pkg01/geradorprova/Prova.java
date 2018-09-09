@@ -1,5 +1,7 @@
 package pkg01.geradorprova;
 
+import java.util.ArrayList;
+
 public class Prova {
 
     //Atributos:
@@ -7,8 +9,8 @@ public class Prova {
     private int peso;
     private String local;
     private String data;
-    private Objetiva[] obj;
-    private Discursiva[] dir;
+    private ArrayList<Objetiva> obj;
+    private ArrayList<Discursiva> dir;
 
     //Construtores:
     public Prova() {
@@ -32,14 +34,20 @@ public class Prova {
         detalhes += "******************\n";
 
         int cont = 0;
-        while (cont < this.dir.length) {
-            detalhes += "*1)" + this.dir[cont].retornaQuestao();
+        if (this.dir.size() == 0) {
+            detalhes += "Sem questões discursivas.\n";
+        }
+        while (cont < this.dir.size()) {
+            detalhes += "*"+(cont+1)+")" + this.dir.get(cont).retornaQuestao();
             cont++;
         }
         detalhes += "******************\n";
         cont = 0;
-        while (cont < this.obj.length) {
-            detalhes += "*1)" + this.obj[cont].retornaQuestao();
+        if (this.obj.size() == 0) {
+            detalhes += "Sem questões objetivas.\n";
+        }
+        while (cont < this.obj.size()) {
+            detalhes += "*"+(cont+1)+")" + this.obj.get(cont).retornaQuestao();
             cont++;
         }
 
@@ -81,20 +89,19 @@ public class Prova {
         this.data = data;
     }
 
-    public Objetiva[] getObj() {
+    public ArrayList<Objetiva> getObj() {
         return obj;
     }
 
-    public void setObj(Objetiva[] obj) {
-        this.obj = obj;
-    }
-
-    public Discursiva[] getDir() {
+    public ArrayList<Discursiva> getDir() {
         return dir;
     }
 
-    public void setDir(Discursiva[] Dir) {
-        this.dir = Dir;
+    public void setObj(ArrayList<Objetiva> obj) {
+        this.obj = obj;
     }
 
+    public void setDir(ArrayList<Discursiva> dir) {
+        this.dir = dir;
+    }
 }

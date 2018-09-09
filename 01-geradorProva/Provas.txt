@@ -1,0 +1,29 @@
+******************
+*Disciplina: POO
+*Data: 12/10/9932
+*Local: Univali
+*Peso: 10
+******************
+******************
+*1)*PerguntaDisc:Flamengo ne?
+*_______________________________________
+*_______________________________________
+*_______________________________________
+*Criterio:mengao
+*Peso:100.0
+*2)*PerguntaDisc:Mengao ou mengao?
+*_______________________________________
+*_______________________________________
+*_______________________________________
+*Criterio:Mengao com M de macho ne 
+*Peso:1000000.0
+******************
+*1)*PerguntaObj:Melhor time
+*a) 1vasco
+*b) 2flamengo
+*c) 3com certeza flamengo
+*d) 4pq eu botei vasco ali se o flamengo � o unico time bom
+*e) 5flamengao
+*Correta:5
+*Peso:3.2223
+******************

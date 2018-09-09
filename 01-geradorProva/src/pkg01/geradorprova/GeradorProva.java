@@ -1,8 +1,14 @@
 package pkg01.geradorprova;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class GeradorProva {
@@ -14,6 +20,9 @@ public class GeradorProva {
         int peso = 0;
         Boolean certo;
         Prova prova1 = new Prova();
+        int continuar = 0;
+        ArrayList<Discursiva> discursivas = new ArrayList<Discursiva>();
+        ArrayList<Objetiva> objetivas = new ArrayList<Objetiva>();
         //
 
         //Primeira parte do programa pedindo Disciplina, Local, Data e peso da prova.
@@ -63,140 +72,139 @@ public class GeradorProva {
         prova1.setNomeDisciplina(disciplina);
         prova1.setPeso(peso);
         //Fim da primeira parte.
-
-        //Segunda parte pedindo quantidade de questões discursivas, suas perguntas, criterios e pesos.
-        int qtdDis = 0;
-
-        while (qtdDis <= 0) {
-            System.out.println("Digite a quantidade de questoes discursivas: ");
-            try {
-                qtdDis = scan.nextInt();
-                scan.nextLine();
-            } catch (InputMismatchException e) {
-                System.out.println("Digite um valor aceitavel(apenas inteiros, sem ser letras).");
-                scan.nextLine();
-            }
-        }
-        Discursiva QuestoesDis[] = new Discursiva[qtdDis];//Cria um vetor de questoes discursivas
-
-        for (int cont = 0; cont < qtdDis; cont++) {
-            QuestoesDis[cont] = new Discursiva(); //Constroi o vetor
-            String pergunta = null, criterios = null;
-            double pesoD = 0;
-
+        do {
             certo = false;
             while (!certo) {
-                System.out.println("Digite a pergunta discursiva(" + (cont + 1) + "):");
-                pergunta = scan.nextLine();
-                if ("".equals(pergunta)) {
-                    System.out.println("Pergunta em branco");
-                } else {
-                    certo = true;
-                }
-            }
-            certo = false;
-            while (!certo) {
-                System.out.println("Digite o criterio de correcao(" + (cont + 1) + "):");
-                criterios = scan.nextLine();
-                if ("".equals(criterios)) {
-                    System.out.println("Criterio em branco");
-                } else {
-                    certo = true;
-                }
-            }
-            while (pesoD <= 0) {
-                System.out.println("Digite o peso desta questão(" + (cont + 1) + "):");
                 try {
-                    pesoD = scan.nextDouble();
+                    System.out.println("Desesja adicionar questao objetiva(1) ou discursiva(2): \nSair(3)");
+                    continuar = scan.nextInt();
                     scan.nextLine();
-                } catch (InputMismatchException e) {
-                    System.out.println("Digite um valor aceitavel(apenas numeros no formato double, sem ser letras).");
-                    scan.nextLine();
+                } catch (Exception e) {
                 }
-            }
-
-            QuestoesDis[cont].setCriteriosCorrecao(criterios);
-            QuestoesDis[cont].setPergunta(pergunta);
-            QuestoesDis[cont].setPeso(pesoD);
-
-        }//Fim da segunda parte.
-
-        prova1.setDir(QuestoesDis);
-
-        //Terceira parte pedindo quantidade de questões objetivas, suas perguntas, opcoes, opcao correta e pesos.
-        int qtdObj = 0;
-
-        while (qtdObj <= 0) {
-            System.out.println("Digite a quantidade de questoes objetivas: ");
-            try {
-                qtdObj = scan.nextInt();
-                scan.nextLine();
-            } catch (InputMismatchException e) {
-                System.out.println("Digite um valor aceitavel(apenas inteiros, sem ser letras).");
-                scan.nextLine();
-            }
-        }
-        Objetiva QuestoesObj[] = new Objetiva[qtdObj];//Cria um vetor de questoes discursivas
-
-        for (int cont = 0; cont < qtdObj; cont++) {
-            QuestoesObj[cont] = new Objetiva(); //Constroi o vetor
-            String pergunta = null;
-            String[] opcoes = new String[5];
-            double pesoO = 0;
-            int opCerta = -1;
-
-            certo = false;
-            while (!certo) {
-                System.out.println("Digite a pergunta objetiva(" + (cont + 1) + "):");
-                pergunta = scan.nextLine();
-                if ("".equals(pergunta)) {
-                    System.out.println("Pergunta em branco");
-                } else {
+                if (continuar == 1 || continuar == 2 || continuar == 3) {
                     certo = true;
+                } else {
+                    System.out.println("Digite um numero valido.");
                 }
+
             }
-            for (int cont1 = 0; cont1 < 5; cont1++) {
+            if (continuar == 2) {
+                //Segunda parte pedindo suas perguntas, criterios e pesos.
+
+                String pergunta = null, criterios = null;
+                double pesoD = 0;
+
                 certo = false;
                 while (!certo) {
-                    System.out.println("Digite a opcao(" + (cont1 + 1) + "/5) da pergunta(" + (cont + 1) + "):");
-                    opcoes[cont1] = scan.nextLine();
-                    if ("".equals(opcoes[cont1])) {
-                        System.out.println("Opcao em branco");
+                    System.out.println("Digite a pergunta discursiva:");
+                    pergunta = scan.nextLine();
+                    if ("".equals(pergunta)) {
+                        System.out.println("Pergunta em branco");
                     } else {
                         certo = true;
                     }
                 }
-            }
-            while (opCerta < 0 || opCerta > 5) {
-                System.out.println("Digite qual a alternativa correta da questao(" + (cont + 1) + "):");
-                try {
-                    opCerta = scan.nextInt() - 1;
-                    scan.nextLine();
-                } catch (InputMismatchException e) {
-                    System.out.println("Digite um valor aceitavel(apenas numeros no formato inteiro de 1 ate 5, sem ser letras).");
-                    scan.nextLine();
+                certo = false;
+                while (!certo) {
+                    System.out.println("Digite o criterio de correcao:");
+                    criterios = scan.nextLine();
+                    if ("".equals(criterios)) {
+                        System.out.println("Criterio em branco");
+                    } else {
+                        certo = true;
+                    }
                 }
-            }
-            while (pesoO <= 0) {
-                System.out.println("Digite o peso desta questão(" + (cont + 1) + "):");
-                try {
-                    pesoO = scan.nextDouble();
-                    scan.nextLine();
-                } catch (InputMismatchException e) {
-                    System.out.println("Digite um valor aceitavel(apenas numeros no formato double, sem ser letras).");
-                    scan.nextLine();
+                while (pesoD <= 0) {
+                    System.out.println("Digite o peso desta questão:");
+                    try {
+                        pesoD = scan.nextDouble();
+                        scan.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite um valor aceitavel(apenas numeros no formato double, sem ser letras).");
+                        scan.nextLine();
+                    }
                 }
+
+                Discursiva dis = new Discursiva();
+                dis.setCriteriosCorrecao(criterios);
+                dis.setPergunta(pergunta);
+                dis.setPeso(pesoD);
+                discursivas.add(dis);
+
+                //Fim da segunda parte.
             }
+            //Terceira parte suas perguntas, opcoes, opcao correta e pesos.
+            if (continuar == 1) {
 
-            QuestoesObj[cont].setPergunta(pergunta);
-            QuestoesObj[cont].setOpcoes(opcoes);
-            QuestoesObj[cont].setRespotaCorreta(opCerta);
-            QuestoesObj[cont].setPeso(pesoO);
+                Objetiva obj = new Objetiva();
 
-        }//Fim da terceira parte.
+                String pergunta = null;
+                String[] opcoes = new String[5];
+                double pesoO = 0;
+                int opCerta = -1;
 
-        prova1.setObj(QuestoesObj);
+                certo = false;
+                while (!certo) {
+                    System.out.println("Digite a pergunta objetiva:");
+                    pergunta = scan.nextLine();
+                    if ("".equals(pergunta)) {
+                        System.out.println("Pergunta em branco");
+                    } else {
+                        certo = true;
+                    }
+                }
+                for (int cont1 = 0; cont1 < 5; cont1++) {
+                    certo = false;
+                    while (!certo) {
+                        System.out.println("Digite a opcao(" + (cont1 + 1) + "/5) da pergunta:");
+                        opcoes[cont1] = scan.nextLine();
+                        if ("".equals(opcoes[cont1])) {
+                            System.out.println("Opcao em branco");
+                        } else {
+                            certo = true;
+                        }
+                    }
+                }
+                while (opCerta < 0 || opCerta > 5) {
+                    System.out.println("Digite qual a alternativa correta da questao:");
+                    try {
+                        opCerta = scan.nextInt() - 1;
+                        scan.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite um valor aceitavel(apenas numeros no formato inteiro de 1 ate 5, sem ser letras).");
+                        scan.nextLine();
+                    }
+                }
+                while (pesoO <= 0) {
+                    System.out.println("Digite o peso desta questão:");
+                    try {
+                        pesoO = scan.nextDouble();
+                        scan.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite um valor aceitavel(apenas numeros no formato double, sem ser letras).");
+                        scan.nextLine();
+                    }
+                }
 
+                obj.setPergunta(pergunta);
+                obj.setOpcoes(opcoes);
+                obj.setRespotaCorreta(opCerta);
+                obj.setPeso(pesoO);
+                objetivas.add(obj);
+                //Fim da terceira parte.
+            }
+        } while (continuar == 1 || continuar == 2);
+
+        prova1.setDir(discursivas);
+        prova1.setObj(objetivas);
+        Path caminho = Paths.get("Provas.txt");
+        byte[] provaEmBytes = prova1.provaObtemImpressao().getBytes();
+        try {
+            Files.write(caminho,provaEmBytes);
+        } catch (IOException ex) {
+            JOptionPane.showConfirmDialog(null, "Erro ao salvar.");
+        }
+        
         System.out.println("" + prova1.provaObtemImpressao());
 
     }

@@ -6,8 +6,10 @@ abstract class Questao {
     private String pergunta;
     private double peso;
     
+    //Metodo abstrato
     abstract String retornaQuestao();
-
+    
+    //Getts e Setters
     public String getPergunta() {
         return pergunta;
     }
