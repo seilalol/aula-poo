@@ -9,7 +9,7 @@ public final class Objetiva extends Questao {
     //Metodos
     public String retornaQuestao() {
         String questao = "";
-        questao += "*PerguntaObj:" + this.getPergunta() + "\n";
+        questao += "*PerguntaObj:" + this.getPergunta() + "\r\n";
         String op[] = this.getOpcoes();
         for (int opc = 0; opc < 5; opc++) {
             String s = "";
@@ -29,10 +29,10 @@ public final class Objetiva extends Questao {
             if (opc == 4) {
                 s = "e";
             }
-            questao += "*" + s + ") "+ (opc + 1) + op[opc] + "\n";
+            questao += "*" + s + ") "+ (opc + 1) + op[opc] + "\r\n";
         }
-        questao += "*Correta:" + (this.getRespotaCorreta() + 1) + "\n";
-        questao += "*Peso:" + this.getPeso() + "\n";
+        questao += "*Correta:" + (this.getRespotaCorreta() + 1) + "\r\n";
+        questao += "*Peso:" + this.getPeso() + "\r\n";
 
         return questao;
     }

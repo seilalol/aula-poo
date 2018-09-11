@@ -1,29 +1,37 @@
 ******************
 *Disciplina: POO
-*Data: 12/10/9932
+*Data: Amanh�
 *Local: Univali
-*Peso: 10
+*Peso: 2
 ******************
 ******************
-*1)*PerguntaDisc:Flamengo ne?
+*1)*PerguntaDisc:Quantal teu aniversario sla
 *_______________________________________
 *_______________________________________
 *_______________________________________
-*Criterio:mengao
-*Peso:100.0
-*2)*PerguntaDisc:Mengao ou mengao?
+*Criterio:12/08/1999
+*Peso:3.1
+*2)*PerguntaDisc:eae cara
 *_______________________________________
 *_______________________________________
 *_______________________________________
-*Criterio:Mengao com M de macho ne 
-*Peso:1000000.0
+*Criterio:eae
+*Peso:2.3
 ******************
-*1)*PerguntaObj:Melhor time
-*a) 1vasco
-*b) 2flamengo
-*c) 3com certeza flamengo
-*d) 4pq eu botei vasco ali se o flamengo � o unico time bom
-*e) 5flamengao
+*1)*PerguntaObj:Qual o melhor time?
+*a) 1flamengo
+*b) 2mengao
+*c) 3flamengao
+*d) 4flamengo
+*e) 5mengo
+*Correta:1
+*Peso:3.2
+*2)*PerguntaObj:Fala oi
+*a) 1io
+*b) 2eae
+*c) 3ae
+*d) 4dae
+*e) 5oi
 *Correta:5
-*Peso:3.2223
+*Peso:2.1
 ******************

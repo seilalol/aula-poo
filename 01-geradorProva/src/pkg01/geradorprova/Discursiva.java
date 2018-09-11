@@ -9,12 +9,12 @@ public final class Discursiva extends Questao {
     public String retornaQuestao() {
         String questao = "";
 
-        questao += "*PerguntaDisc:" + this.getPergunta() + "\n";
-        questao += "*_______________________________________" + "\n";
-        questao += "*_______________________________________" + "\n";
-        questao += "*_______________________________________" + "\n";
-        questao += "*Criterio:" + this.getCriteriosCorrecao() + "\n";
-        questao += "*Peso:" + this.getPeso() + "\n";
+        questao += "*PerguntaDisc:" + this.getPergunta() + "\r\n";
+        questao += "*_______________________________________" + "\r\n";
+        questao += "*_______________________________________" + "\r\n";
+        questao += "*_______________________________________" + "\r\n";
+        questao += "*Criterio:" + this.getCriteriosCorrecao() + "\r\n";
+        questao += "*Peso:" + this.getPeso() + "\r\n";
 
         return questao;
     }

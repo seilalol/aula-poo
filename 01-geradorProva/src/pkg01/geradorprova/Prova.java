@@ -19,39 +19,39 @@ public class Prova {
     //Metodos:
     public String obtemDetalhes() {
 
-        String detalhes = "******************\n";
-        detalhes += "*Disciplina: " + this.getNomeDisciplina() + "\n";
-        detalhes += "*Data: " + this.getData() + "\n";
-        detalhes += "*Local: " + this.getLocal() + "\n";
-        detalhes += "*Peso: " + this.getPeso() + "\n";
-        detalhes += "******************\n";
+        String detalhes = "******************\r\n";
+        detalhes += "*Disciplina: " + this.getNomeDisciplina() + "\r\n";
+        detalhes += "*Data: " + this.getData() + "\r\n";
+        detalhes += "*Local: " + this.getLocal() + "\r\n";
+        detalhes += "*Peso: " + this.getPeso() + "\r\n";
+        detalhes += "******************\r\n";
 
         return detalhes;
     }
 
     public String provaObtemImpressao() {
         String detalhes = this.obtemDetalhes();
-        detalhes += "******************\n";
+        detalhes += "******************\r\n";
 
         int cont = 0;
         if (this.dir.size() == 0) {
-            detalhes += "Sem questões discursivas.\n";
+            detalhes += "Sem questões discursivas.\r\n";
         }
         while (cont < this.dir.size()) {
             detalhes += "*"+(cont+1)+")" + this.dir.get(cont).retornaQuestao();
             cont++;
         }
-        detalhes += "******************\n";
+        detalhes += "******************\r\n";
         cont = 0;
         if (this.obj.size() == 0) {
-            detalhes += "Sem questões objetivas.\n";
+            detalhes += "Sem questões objetivas.\r\n";
         }
         while (cont < this.obj.size()) {
             detalhes += "*"+(cont+1)+")" + this.obj.get(cont).retornaQuestao();
             cont++;
         }
 
-        detalhes += "******************\n";
+        detalhes += "******************\r\n";
 
         return detalhes;
     }
