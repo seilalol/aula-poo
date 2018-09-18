@@ -9,7 +9,7 @@ public final class Discursiva extends Questao {
     public String retornaQuestao() {
         String questao = "";
 
-        questao += "*PerguntaDisc:" + this.getPergunta() + "\r\n";
+        questao += "*PerguntaDiscursiva:" + this.getPergunta() + "\r\n";
         questao += "*_______________________________________" + "\r\n";
         questao += "*_______________________________________" + "\r\n";
         questao += "*_______________________________________" + "\r\n";

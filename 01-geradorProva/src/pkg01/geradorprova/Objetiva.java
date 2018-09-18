@@ -9,7 +9,7 @@ public final class Objetiva extends Questao {
     //Metodos
     public String retornaQuestao() {
         String questao = "";
-        questao += "*PerguntaObj:" + this.getPergunta() + "\r\n";
+        questao += "*PerguntaObjetiva:" + this.getPergunta() + "\r\n";
         String op[] = this.getOpcoes();
         for (int opc = 0; opc < 5; opc++) {
             String s = "";
@@ -29,9 +29,9 @@ public final class Objetiva extends Questao {
             if (opc == 4) {
                 s = "e";
             }
-            questao += "*" + s + ") "+ (opc + 1) + op[opc] + "\r\n";
+            questao += "*" + s + ") " + op[opc] + "\r\n";
         }
-        questao += "*Correta:" + (this.getRespotaCorreta() + 1) + "\r\n";
+        //questao += "*Correta:" + (this.getRespotaCorreta() + 1) + "\r\n"; Não se printa a questão correta numa prova creio eu
         questao += "*Peso:" + this.getPeso() + "\r\n";
 
         return questao;

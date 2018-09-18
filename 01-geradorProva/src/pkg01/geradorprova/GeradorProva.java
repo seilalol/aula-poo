@@ -16,11 +16,10 @@ public class GeradorProva {
     public static void main(String[] args) {
         //Variaveis
         Scanner scan = new Scanner(System.in);
-        String local = null, disciplina = null, data = null;
+        String local = null, disciplina = null, data = null, tipoQuestao = null, continuar = "s", temporario;
         int peso = 0;
         Boolean certo;
         Prova prova1 = new Prova();
-        int continuar = 0;
         ArrayList<Discursiva> discursivas = new ArrayList<Discursiva>();
         ArrayList<Objetiva> objetivas = new ArrayList<Objetiva>();
         //
@@ -28,42 +27,40 @@ public class GeradorProva {
         //Primeira parte do programa pedindo Disciplina, Local, Data e peso da prova.
         certo = false;
         while (!certo) {
-            System.out.println("Digite o nome da Disciplina: ");
-            disciplina = scan.nextLine();
-            if ("".equals(disciplina)) {
-                System.out.println("Disciplina em branco");
+            disciplina = JOptionPane.showInputDialog("Digite o nome da Disciplina: ");
+            if ("".equals(disciplina) || disciplina == null) {
+                JOptionPane.showMessageDialog(null, "Disciplina em branco");
             } else {
                 certo = true;
             }
         }
         certo = false;
         while (!certo) {
-            System.out.println("Digite o local da prova: ");
-            local = scan.nextLine();
-            if ("".equals(local)) {
-                System.out.println("Local em branco");
+            local = JOptionPane.showInputDialog("Digite o local da prova: ");
+            if ("".equals(local) || local == null) {
+                JOptionPane.showMessageDialog(null, "Local em branco");
             } else {
                 certo = true;
             }
         }
         certo = false;
         while (!certo) {
-            System.out.println("Digite a data da prova: ");
-            data = scan.nextLine();
-            if ("".equals(data)) {
-                System.out.println("Data em branco");
+            data = JOptionPane.showInputDialog("Digite a data da prova: ");
+            if ("".equals(data) || data == null) {
+                JOptionPane.showMessageDialog(null, "Data em branco");
             } else {
                 certo = true;
             }
         }
         while (peso <= 0) {
             try {
-                System.out.println("Digite o peso da prova: ");
-                peso = scan.nextInt();
-                scan.nextLine();
-            } catch (InputMismatchException e) {
-                System.out.println("Digite um valor aceitavel(apenas inteiros, sem ser letras).");
-                scan.nextLine();
+                temporario = JOptionPane.showInputDialog("Digite o peso da prova: ");
+                peso = Integer.parseInt(temporario);
+            } catch (Exception e) {
+                peso = 0;
+            }
+            if (peso <= 0) {
+                JOptionPane.showMessageDialog(null, "Digite um valor aceitavel(apenas inteiros, sem ser letras).");
             }
         }
 
@@ -75,20 +72,15 @@ public class GeradorProva {
         do {
             certo = false;
             while (!certo) {
-                try {
-                    System.out.println("Desesja adicionar questao objetiva(1) ou discursiva(2): \nSair(3)");
-                    continuar = scan.nextInt();
-                    scan.nextLine();
-                } catch (Exception e) {
-                }
-                if (continuar == 1 || continuar == 2 || continuar == 3) {
+                tipoQuestao = JOptionPane.showInputDialog("Deseja adicionar questao objetiva(O) ou discursiva(D):");
+                if ("O".equals(tipoQuestao) || "D".equals(tipoQuestao) || "o".equals(tipoQuestao) || "d".equals(tipoQuestao)) {
                     certo = true;
                 } else {
-                    System.out.println("Digite um numero valido.");
+                    JOptionPane.showMessageDialog(null, "Digite um caracter valido.");
                 }
 
             }
-            if (continuar == 2) {
+            if ("D".equals(tipoQuestao) || "d".equals(tipoQuestao)) {
                 //Segunda parte pedindo suas perguntas, criterios e pesos.
 
                 String pergunta = null, criterios = null;
@@ -96,33 +88,33 @@ public class GeradorProva {
 
                 certo = false;
                 while (!certo) {
-                    System.out.println("Digite a pergunta discursiva:");
-                    pergunta = scan.nextLine();
-                    if ("".equals(pergunta)) {
-                        System.out.println("Pergunta em branco");
+                    pergunta = JOptionPane.showInputDialog("Digite a pergunta discursiva:");
+                    if ("".equals(pergunta) || pergunta == null) {
+                        JOptionPane.showMessageDialog(null, "Pergunta em branco");
                     } else {
                         certo = true;
                     }
                 }
                 certo = false;
                 while (!certo) {
-                    System.out.println("Digite o criterio de correcao:");
-                    criterios = scan.nextLine();
-                    if ("".equals(criterios)) {
-                        System.out.println("Criterio em branco");
+                    criterios = JOptionPane.showInputDialog("Digite o criterio de correcao:");
+                    if ("".equals(criterios) || criterios == null) {
+                        JOptionPane.showMessageDialog(null, "Criterio em branco");
                     } else {
                         certo = true;
                     }
                 }
                 while (pesoD <= 0) {
-                    System.out.println("Digite o peso desta questão:");
+                    temporario = JOptionPane.showInputDialog("Digite o peso desta questão:");
                     try {
-                        pesoD = scan.nextDouble();
-                        scan.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.println("Digite um valor aceitavel(apenas numeros no formato double, sem ser letras).");
-                        scan.nextLine();
+                        pesoD = Double.parseDouble(temporario);
+                    } catch (Exception e) {
+                        pesoD = 0;
                     }
+                    if (pesoD <= 0) {
+                        JOptionPane.showMessageDialog(null, "Digite um valor aceitavel(apenas numeros no formato double, sem ser letras).");
+                    }
+
                 }
 
                 Discursiva dis = new Discursiva();
@@ -134,7 +126,7 @@ public class GeradorProva {
                 //Fim da segunda parte.
             }
             //Terceira parte suas perguntas, opcoes, opcao correta e pesos.
-            if (continuar == 1) {
+            if ("O".equals(tipoQuestao) || "o".equals(tipoQuestao)) {
 
                 Objetiva obj = new Objetiva();
 
@@ -145,10 +137,9 @@ public class GeradorProva {
 
                 certo = false;
                 while (!certo) {
-                    System.out.println("Digite a pergunta objetiva:");
-                    pergunta = scan.nextLine();
-                    if ("".equals(pergunta)) {
-                        System.out.println("Pergunta em branco");
+                    pergunta = JOptionPane.showInputDialog("Digite a pergunta objetiva:");
+                    if ("".equals(pergunta) || pergunta == null) {
+                        JOptionPane.showMessageDialog(null, "Pergunta em branco");
                     } else {
                         certo = true;
                     }
@@ -156,55 +147,78 @@ public class GeradorProva {
                 for (int cont1 = 0; cont1 < 5; cont1++) {
                     certo = false;
                     while (!certo) {
-                        System.out.println("Digite a opcao(" + (cont1 + 1) + "/5) da pergunta:");
-                        opcoes[cont1] = scan.nextLine();
-                        if ("".equals(opcoes[cont1])) {
-                            System.out.println("Opcao em branco");
+                        opcoes[cont1] = JOptionPane.showInputDialog("Digite a opcao(" + (cont1 + 1) + "/5) da pergunta:");
+                        if ("".equals(opcoes[cont1]) || opcoes[cont1] == null) {
+                            JOptionPane.showMessageDialog(null, "Opcao em branco");
                         } else {
                             certo = true;
                         }
                     }
                 }
-                while (opCerta < 0 || opCerta > 5) {
-                    System.out.println("Digite qual a alternativa correta da questao:");
+                while (opCerta < 1 || opCerta > 5) {
+                    temporario = JOptionPane.showInputDialog("Digite qual a alternativa correta da questao:");
                     try {
-                        opCerta = scan.nextInt() - 1;
-                        scan.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.println("Digite um valor aceitavel(apenas numeros no formato inteiro de 1 ate 5, sem ser letras).");
-                        scan.nextLine();
+                        opCerta = Integer.parseInt(temporario);
+                    } catch (Exception e) {
+                        opCerta = 0;
+                    }
+                    if (opCerta < 1 || opCerta > 5) {
+                        JOptionPane.showMessageDialog(null, "Digite um valor aceitavel(apenas numeros no formato inteiro de 1 ate 5, sem ser letras).");
                     }
                 }
                 while (pesoO <= 0) {
-                    System.out.println("Digite o peso desta questão:");
+                    temporario = JOptionPane.showInputDialog("Digite o peso desta questão:");
                     try {
-                        pesoO = scan.nextDouble();
-                        scan.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.println("Digite um valor aceitavel(apenas numeros no formato double, sem ser letras).");
-                        scan.nextLine();
+                        pesoO = Double.parseDouble(temporario);
+                    } catch (Exception e) {
+                        pesoO = 0;
+                    }
+                    if (pesoO <= 0) {
+                        JOptionPane.showMessageDialog(null, "Digite um valor aceitavel(apenas numeros no formato double, sem ser letras).");
                     }
                 }
 
                 obj.setPergunta(pergunta);
                 obj.setOpcoes(opcoes);
-                obj.setRespotaCorreta(opCerta);
+                obj.setRespotaCorreta(opCerta - 1);
                 obj.setPeso(pesoO);
                 objetivas.add(obj);
                 //Fim da terceira parte.
+
             }
-        } while (continuar == 1 || continuar == 2);
+            certo = false;
+            while (!certo) {
+                continuar = JOptionPane.showInputDialog("Deseja continuar(S/N):");
+                if ("S".equals(continuar) || "s".equals(continuar) || "N".equals(continuar) || "n".equals(continuar)) {
+                    certo = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Digite um caracter valido.");
+                }
+
+            }
+        } while ("s".equals(continuar) || "S".equals(continuar));
+        certo = false;//Pede o nome do arquivo e garente que o usuario não tente criar um arquivo em branco.
+        String arquivo = null;
+        while (!certo) {
+            arquivo = JOptionPane.showInputDialog("Digite o nome do arquivo(Em branco não é permitido):") + ".txt";
+            if (".txt".equals(arquivo) || "null.txt".equals(arquivo)) {
+                certo = false;
+                JOptionPane.showMessageDialog(null, "Digite um nome valido.");
+            } else {
+                certo = true;
+            }
+        }
 
         prova1.setDir(discursivas);
         prova1.setObj(objetivas);
-        Path caminho = Paths.get("Provas.txt");
+        Path caminho = Paths.get(arquivo);
         byte[] provaEmBytes = prova1.provaObtemImpressao().getBytes();
         try {
-            Files.write(caminho,provaEmBytes);
+            Files.write(caminho, provaEmBytes);
         } catch (IOException ex) {
             JOptionPane.showConfirmDialog(null, "Erro ao salvar.");
         }
-        
+
         System.out.println("" + prova1.provaObtemImpressao());
 
     }
