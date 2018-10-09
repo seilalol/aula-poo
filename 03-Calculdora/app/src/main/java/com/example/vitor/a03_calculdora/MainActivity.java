@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             peso.setVisibility(View.INVISIBLE);
             velMed.setVisibility(View.INVISIBLE);
 
-        }else{ //Caso seja maior, aparece uma mensagem de erro no canto inferior central
+        }if(naopode==0 || naopode >1){ //Caso seja maior, aparece uma mensagem de erro no canto inferior central
             Toast mensagemErro = Toast.makeText(this, "Não é possivel continuar", Toast.LENGTH_LONG);
             mensagemErro.show();
             return;
