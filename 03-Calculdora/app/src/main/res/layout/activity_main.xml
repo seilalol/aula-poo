@@ -4,100 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/einstein"
     tools:context=".MainActivity">
 
     <CheckBox
         android:id="@+id/peso"
-        android:layout_width="wrap_content"
+        android:layout_width="78dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
+        android:background="?android:attr/colorForegroundInverse"
         android:text="Peso"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/velocidade"
-        android:layout_width="wrap_content"
+        android:id="@+id/MRU"
+        android:layout_width="84dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="60dp"
+        android:background="?android:attr/colorBackgroundFloating"
+        android:text="MRU"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/velocidade"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
-        android:text="Velocidade media"
+        android:background="?android:attr/colorBackgroundFloating"
+        android:text="VelocMedia"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/peso" />
 
     <EditText
         android:id="@+id/distancia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="81dp"
+        android:layout_height="37dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="84dp"
+        android:background="@android:color/darker_gray"
         android:hint="Distancia"
+        android:textColor="?attr/colorBackgroundFloating"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Go" />
 
     <EditText
         android:id="@+id/massa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="84dp"
+        android:layout_height="37dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="84dp"
+        android:background="@android:color/darker_gray"
         android:hint="Massa"
+        android:textColor="?attr/colorBackgroundFloating"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Go" />
+
+    <EditText
+        android:id="@+id/x0"
+        android:layout_width="85dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="84dp"
+        android:background="@android:color/darker_gray"
+        android:hint="X-Inicial"
+        android:textColor="?attr/colorBackgroundFloating"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Go" />
 
     <EditText
         android:id="@+id/tempo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="66dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="48dp"
+        android:background="@android:color/darker_gray"
         android:hint="Tempo"
+        android:textColor="?attr/colorBackgroundFloating"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Go" />
+
+    <EditText
+        android:id="@+id/vel"
+        android:layout_width="91dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/darker_gray"
+        android:hint="Velocidade"
+        android:textColor="?attr/colorBackgroundFloating"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/tempo"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toEndOf="@+id/distancia"
         app:layout_constraintTop_toBottomOf="@+id/Go" />
 
     <Button
         android:id="@+id/calcular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="428dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="32dp"
         android:onClick="calcular"
         android:text="Calcular"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/voltar"
-        app:layout_constraintVertical_bias="0.272" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/resultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="108dp"
+        android:textColor="@color/colorPrimary"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/calcular"
         app:layout_constraintEnd_toStartOf="@+id/tempo"
-        app:layout_constraintStart_toEndOf="@+id/distancia"
-        app:layout_constraintTop_toBottomOf="@+id/Go"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toEndOf="@+id/distancia" />
 
     <Button
         android:id="@+id/Go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="216dp"
         android:layout_marginEnd="8dp"
         android:onClick="Go"
         android:text="Go"
@@ -110,15 +155,15 @@
         android:id="@+id/voltar"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="428dp"
+        android:layout_marginBottom="8dp"
         android:onClick="voltar"
         android:text="Voltar"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.111" />
 
 </android.support.constraint.ConstraintLayout>
