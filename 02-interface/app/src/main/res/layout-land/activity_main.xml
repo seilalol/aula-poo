@@ -13,9 +13,10 @@
         android:layout_alignTop="@+id/textView"
         android:layout_alignParentStart="true"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="6dp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:srcCompat="@drawable/baseline_person_24"
-        tools:layout_editor_absoluteY="54dp" />
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:srcCompat="@drawable/baseline_person_24" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -24,9 +25,10 @@
         android:layout_alignTop="@+id/textView3"
         android:layout_alignParentStart="true"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:srcCompat="@drawable/baseline_phone_24"
-        tools:layout_editor_absoluteY="178dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:srcCompat="@drawable/baseline_phone_24" />
 
     <EditText
         android:id="@+id/textView"
@@ -48,7 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="37dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:hint="Nome fonético"
         android:textAlignment="viewStart"
@@ -63,7 +65,7 @@
         android:layout_width="0dp"
         android:layout_height="37dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:hint="Telefone"
         android:textAlignment="viewStart"
@@ -78,22 +80,26 @@
         android:layout_width="0dp"
         android:layout_height="37dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="220dp"
+        android:layout_marginBottom="8dp"
         android:hint="Celular"
         android:textAlignment="viewStart"
         android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="19dp"
         android:layout_height="27dp"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:srcCompat="@drawable/baseline_expand_more_black_48"
-        tools:layout_editor_absoluteY="215dp" />
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        app:srcCompat="@drawable/baseline_expand_more_black_48" />
 
     <ImageView
         android:id="@+id/imageView16"
@@ -101,8 +107,8 @@
         android:layout_height="27dp"
         android:layout_marginStart="12dp"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:srcCompat="@drawable/baseline_expand_more_black_48"
-        tools:layout_editor_absoluteY="133dp" />
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:srcCompat="@drawable/baseline_expand_more_black_48" />
 
     <ImageView
         android:id="@+id/imageView17"
@@ -110,8 +116,8 @@
         android:layout_height="27dp"
         android:layout_marginStart="12dp"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:srcCompat="@drawable/baseline_expand_more_black_48"
-        tools:layout_editor_absoluteY="51dp" />
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:srcCompat="@drawable/baseline_expand_more_black_48" />
 
     <ImageView
         android:id="@+id/imageView15"
@@ -127,14 +133,15 @@
         android:layout_width="0dp"
         android:layout_height="37dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:hint="Nome"
         android:textAlignment="viewStart"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
-        tools:layout_editor_absoluteY="51dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
