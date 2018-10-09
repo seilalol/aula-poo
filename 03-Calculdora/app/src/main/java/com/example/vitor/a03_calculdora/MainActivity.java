@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
             peso.setVisibility(View.INVISIBLE);
             velMed.setVisibility(View.INVISIBLE);
 
-        }else if(naopode>1){ //Caso seja maior, aparece uma mensagem de erro no canto inferior central
-            Toast mensagemErro = Toast.makeText(this, "Não é possivel selecionar mais de 1 checkbox", Toast.LENGTH_LONG);
+        }else{ //Caso seja maior, aparece uma mensagem de erro no canto inferior central
+            Toast mensagemErro = Toast.makeText(this, "Não é possivel continuar", Toast.LENGTH_LONG);
             mensagemErro.show();
             return;
         }
