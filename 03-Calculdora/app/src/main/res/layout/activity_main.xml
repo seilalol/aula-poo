@@ -30,6 +30,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
+        android:id="@+id/IMC"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="100dp"
+        android:background="?android:attr/colorBackgroundFloating"
+        android:text="IMC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
         android:id="@+id/velocidade"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
@@ -60,7 +71,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="84dp"
         android:background="@android:color/darker_gray"
-        android:hint="Massa"
+        android:hint="Massa(kg)"
         android:textColor="?attr/colorBackgroundFloating"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,6 +119,22 @@
         app:layout_constraintStart_toEndOf="@+id/distancia"
         app:layout_constraintTop_toBottomOf="@+id/Go" />
 
+    <EditText
+        android:id="@+id/Altura"
+        android:layout_width="91dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/darker_gray"
+        android:hint="Altura"
+        android:textColor="?attr/colorBackgroundFloating"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/tempo"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toEndOf="@+id/distancia"
+        app:layout_constraintTop_toBottomOf="@+id/Go" />
+
     <Button
         android:id="@+id/calcular"
         android:layout_width="wrap_content"
@@ -130,11 +157,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="108dp"
-        android:textColor="@color/colorPrimary"
+        android:background="@android:color/darker_gray"
+        android:textColor="?android:attr/colorForegroundInverse"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/calcular"
         app:layout_constraintEnd_toStartOf="@+id/tempo"
-        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toEndOf="@+id/distancia" />
 
     <Button
@@ -165,5 +193,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.111" />
+
+    <TextView
+        android:id="@+id/inicioTexto"
+        android:layout_width="185dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/darker_gray"
+        android:text="Selecione a conta desejada:"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textoConta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="316dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/darker_gray"
+        android:text="Insira os valores:"
+        android:textColor="@android:color/background_light"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/inicioTexto" />
+
+    <ImageView
+        android:id="@+id/einsteinl"
+        android:layout_width="287dp"
+        android:layout_height="256dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/einsteinl" />
 
 </android.support.constraint.ConstraintLayout>
