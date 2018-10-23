@@ -24,15 +24,17 @@ public class retangulopasso1 extends AppCompatActivity {
         altura = findViewById(R.id.altura2);
         comprimento = findViewById(R.id.base2);
 
-        retanguloResult calcular = new retanguloResult();
-        Intent calcularRetangulo = new Intent(this.getApplicationContext(), retangulopassofinal.class);
-        try{
+        retanguloResult calcular = new retanguloResult(); //Recebe da tela os atributos
+        Intent calcularRetangulo = new Intent(this.getApplicationContext(), retangulopassofinal.class); //Intent da proxima activity
+
+        try{ //Garante não fechar o programa se houver erros
             calcular.setAltura(Double.parseDouble((altura.getText().toString())));
             calcular.setComprimento(Double.parseDouble(comprimento.getText().toString()));
 
-            calcularRetangulo.putExtra("Objeto2",(Serializable) calcular);
+            calcularRetangulo.putExtra("Objeto2",(Serializable) calcular);//Passa a classe na qual realiza todos os calculos e contem os atributos com um nome para ser recebido
+                                                                                //no proximo intent
 
-            this.startActivity(calcularRetangulo);
+            this.startActivity(calcularRetangulo); //Inicia a proxima tela
         }
         catch (Exception e){
             Toast.makeText(this.getApplicationContext(), "Erro", Toast.LENGTH_LONG).show();

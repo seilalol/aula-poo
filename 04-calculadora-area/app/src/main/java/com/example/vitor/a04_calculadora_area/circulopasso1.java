@@ -24,14 +24,16 @@ public class circulopasso1 extends AppCompatActivity {
 
         raio = findViewById(R.id.raio);
 
-        circuloResult calcular = new circuloResult();
-        Intent calcularCirculo = new Intent(this.getApplicationContext(), circulopassofinal.class);
-        try{
+        circuloResult calcular = new circuloResult(); //Recebe da tela os atributos
+        Intent calcularCirculo = new Intent(this.getApplicationContext(), circulopassofinal.class); //Intent da proxima activity
+
+        try{ //Garante não fechar o programa se houver erros
             calcular.setRaio(Double.parseDouble((raio.getText().toString())));
 
-            calcularCirculo.putExtra("Objeto3",(Serializable) calcular);
+            calcularCirculo.putExtra("Objeto3",(Serializable) calcular);//Passa a classe na qual realiza todos os calculos e contem os atributos com um nome para ser recebido
+                                                                                //no proximo intent
 
-            this.startActivity(calcularCirculo);
+            this.startActivity(calcularCirculo); //Inicia a proxima tela
         }
         catch (Exception e){
             Toast.makeText(this.getApplicationContext(), "Erro", Toast.LENGTH_LONG).show();

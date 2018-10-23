@@ -13,14 +13,19 @@ public class circulopassofinal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circulopassofinal);
 
-        circuloResult calcular = (circuloResult) this.getIntent().getSerializableExtra("Objeto3");
+        circuloResult calcular = (circuloResult) this.getIntent().getSerializableExtra("Objeto3"); //Recebe o objeto onde tem todos os atributos e que faz o calculo.
 
+        TextView raio = findViewById(R.id.raioC);
         TextView resultadoC = findViewById(R.id.resultC);
-        resultadoC.setText("Area: " + calcular.getResultado() + "m²");
+
+        resultadoC.setText("Area: " + calcular.getResultado() + "m²"); //Troca as variaveis na referencia ao xml para mostrar no aplicativo
+        raio.setText("Raio: " + calcular.getRaio());
+
+
 
     }
 
-    public void voltarC(View objeto){
+    public void voltarC(View objeto){ //Função do botão para voltar ao menu
 
         Intent voltarMenu = new Intent(this.getApplicationContext(), MainActivity.class);
         voltarMenu.addFlags(voltarMenu.FLAG_ACTIVITY_CLEAR_TOP);

@@ -24,15 +24,16 @@ public class triangulopasso1 extends AppCompatActivity {
         altura = findViewById(R.id.altura);
         comprimento = findViewById(R.id.base);
 
-        trianguloResult calcular = new trianguloResult();
-        Intent calcularTriangulo = new Intent(this.getApplicationContext(),triangulopassofinal.class);
-        try{
+        trianguloResult calcular = new trianguloResult();  //Recebe da tela os atributos
+        Intent calcularTriangulo = new Intent(this.getApplicationContext(),triangulopassofinal.class); //Intent da proxima activity
+
+        try{ //Garante não fechar o programa se houver erros
             calcular.setAltura(Double.parseDouble((altura.getText().toString())));
             calcular.setComprimento(Double.parseDouble(comprimento.getText().toString()));
 
-            calcularTriangulo.putExtra("Objeto",(Serializable) calcular);
-
-            this.startActivity(calcularTriangulo);
+            calcularTriangulo.putExtra("Objeto",(Serializable) calcular); //Passa a classe na qual realiza todos os calculos e contem os atributos com um nome para ser recebido
+                                                                                 //no proximo intent
+            this.startActivity(calcularTriangulo); //Inicia a proxima tela
         }
         catch (Exception e){
             Toast.makeText(this.getApplicationContext(), "Erro", Toast.LENGTH_LONG).show();

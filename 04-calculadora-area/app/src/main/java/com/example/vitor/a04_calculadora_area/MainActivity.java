@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void avancar(View objeto){
 
-        RadioGroup opcoes = findViewById(R.id.opcoes);
+        RadioGroup opcoes = findViewById(R.id.opcoes); //A partir daqui ao clicar no botão verifica qual opção foi selecionada e cria a intent pra tal, iniciando a proxima activity
 
         if(opcoes.getCheckedRadioButtonId() == R.id.triangulo){
 

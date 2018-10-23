@@ -13,14 +13,19 @@ public class retangulopassofinal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retangulopassofinal);
 
-        retanguloResult calcular = (retanguloResult) this.getIntent().getSerializableExtra("Objeto2");
+        retanguloResult calcular = (retanguloResult) this.getIntent().getSerializableExtra("Objeto2"); //Recebe o objeto onde tem todos os atributos e que faz o calculo.
 
+        TextView baseR = findViewById(R.id.baseR),alturaR = findViewById(R.id.alturaR);
         TextView resultadoR = findViewById(R.id.resultR);
-        resultadoR.setText("Area: " + calcular.getResultado() + "m²");
+
+        resultadoR.setText("Area: " + calcular.getResultado() + "m²"); //Troca as variaveis na referencia ao xml para mostrar no aplicativo
+        alturaR.setText("Altura: " + calcular.getAltura());
+        baseR.setText("Base: " + calcular.getComprimento());
+
 
     }
 
-    public void voltarR(View objeto){
+    public void voltarR(View objeto){ //Função do botão para voltar ao menu
 
         Intent voltarMenu = new Intent(this.getApplicationContext(), MainActivity.class);
         voltarMenu.addFlags(voltarMenu.FLAG_ACTIVITY_CLEAR_TOP);
