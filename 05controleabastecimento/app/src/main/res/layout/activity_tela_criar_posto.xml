@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="50dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:text="KmAtual:"
@@ -19,7 +19,7 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="50dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="Data:"
@@ -29,7 +29,7 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="50dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="LitrosAbast:"
@@ -39,7 +39,7 @@
     <EditText
         android:id="@+id/kmAtualPosto"
         android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="33dp"
         android:inputType="number|numberSigned|numberDecimal"
@@ -49,7 +49,7 @@
     <EditText
         android:id="@+id/litrosAtualPosto"
         android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         android:inputType="number|numberSigned|numberDecimal"
@@ -59,7 +59,7 @@
     <EditText
         android:id="@+id/dataAtualPosto"
         android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         android:inputType="date"
@@ -73,6 +73,7 @@
         android:layout_marginStart="147dp"
         android:layout_marginEnd="149dp"
         android:layout_marginBottom="44dp"
+        android:onClick="salvar"
         android:text="Salvar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,7 @@
 package com.example.vitor.a05_controle_abastecimento;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,38 +11,40 @@ import android.view.View;
 import java.util.ArrayList;
 
 public class telaSelect extends AppCompatActivity {
-    private ArrayList<Posto> totalPostos;
     private abastecimentoAdapter postoAdapter;
     private RecyclerView rvTotalPostos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-        totalPostos = new ArrayList<Posto>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_select);
+        abastecimentoDAO start = new abastecimentoDAO();
         this.rvTotalPostos = findViewById(R.id.rvTotalPostos);
         this.postoAdapter = new abastecimentoAdapter();
-        this.postoAdapter.listaAvaliacoes = this.totalPostos;
+        this.postoAdapter.listaAvaliacoes = abastecimentoDAO.getLista(this.getApplicationContext());
         rvTotalPostos.setAdapter(this.postoAdapter);
-        rvTotalPostos.setLayoutManager( new LinearLayoutManager(this.getApplicationContext()));
+        rvTotalPostos.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
+
 
     }
 
-    public void criar(View view){
 
-       Intent telaCriar = new Intent(this.getApplicationContext(), telaCriarPosto.class);
-       startActivity(telaCriar);
+    public void criarNovo(View Objeto) {
+
+
         try {
-            Posto novo = (Posto) getIntent().getSerializableExtra("Objeto");
-            this.postoAdapter.listaAvaliacoes.add(novo);
+            Intent telaCriar = new Intent(this.getApplicationContext(), telaCriarPosto.class);
+            startActivityForResult(telaCriar,1);
+            ArrayList<Posto> novo = abastecimentoDAO.getLista(this.getApplicationContext());
+            this.postoAdapter= new abastecimentoAdapter();
+            this.postoAdapter.listaAvaliacoes = novo;
             this.postoAdapter.notifyDataSetChanged();
-        }catch (Exception e){}
-
-
-
+        } catch (Exception e) {
+        }
 
     }
+
+
 
 }

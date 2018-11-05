@@ -13,31 +13,37 @@ public class telaCriarPosto extends AppCompatActivity {
         setContentView(R.layout.activity_tela_criar_posto);
     }
 
-    public void salvar(View view){
+    public void salvar(View view) {
         try {
-        EditText kmAtual,Litros,data;
+            EditText kmAtual, Litros, data;
 
-        kmAtual = findViewById(R.id.kmAtualPosto);
-        Litros = findViewById(R.id.litrosAtualPosto);
-        data = findViewById(R.id.dataAtualPosto);
+            kmAtual = findViewById(R.id.kmAtualPosto);
+            Litros = findViewById(R.id.litrosAtualPosto);
+            data = findViewById(R.id.dataAtualPosto);
 
             String dataString = data.getText().toString();
             double litrosDouble = Double.parseDouble(Litros.getText().toString());
             double kmDouble = Double.parseDouble(kmAtual.getText().toString());
 
-        Posto novo = new Posto();
+            Posto novo = new Posto();
 
-        novo.setLitrosAbastecidos(litrosDouble);
-        novo.setKmAtual(kmDouble);
-        novo.setData(dataString);
+            novo.setLitrosAbastecidos(litrosDouble);
+            novo.setKmAtual(kmDouble);
+            novo.setData(dataString);
 
-        getIntent().putExtra("Objeto",novo);
+            abastecimentoDAO salvar = new abastecimentoDAO();
 
-        }catch(Exception e){
+
+
+            if(abastecimentoDAO.salvar(this.getApplicationContext(), novo)==true) {
+                setResult(1);
+                finish();
+            }
+
+        } catch (Exception e) {
 
 
         }
-
 
 
     }
