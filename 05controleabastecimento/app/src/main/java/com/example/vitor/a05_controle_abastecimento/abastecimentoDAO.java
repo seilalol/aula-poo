@@ -16,15 +16,15 @@ public class abastecimentoDAO {
     private static final String NOME_ARQUIVO = "postos.txt";
     public static boolean salvar(Context c, Posto aSerSalva){
         AL_CACHE.add(aSerSalva);
-        String avEmString = "";
-        //avEmString += aSerSalva.getConteudo() + ";";
-        avEmString += aSerSalva.getData() + ";";
-        avEmString += aSerSalva.getLitrosAbastecidos() + ";";
-        avEmString += aSerSalva.getKmAtual() + "\n";
+        String postoEmString = "";
+        //postoEmString += aSerSalva.getConteudo() + ";";
+        postoEmString += aSerSalva.getData() + ";";
+        postoEmString += aSerSalva.getLitrosAbastecidos() + ";";
+        postoEmString += aSerSalva.getKmAtual() + "\n";
         File refArquivo = new File( c.getFilesDir().getPath() + NOME_ARQUIVO );
         try {
             FileWriter escritor = new FileWriter(refArquivo, true);
-            escritor.write( avEmString );
+            escritor.write( postoEmString );
             escritor.close();
             return true;
         } catch (IOException e) {

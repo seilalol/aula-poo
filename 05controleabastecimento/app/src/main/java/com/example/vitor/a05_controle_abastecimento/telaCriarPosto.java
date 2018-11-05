@@ -3,7 +3,12 @@ package com.example.vitor.a05_controle_abastecimento;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class telaCriarPosto extends AppCompatActivity {
 
@@ -16,6 +21,14 @@ public class telaCriarPosto extends AppCompatActivity {
     public void salvar(View view) {
         try {
             EditText kmAtual, Litros, data;
+            Spinner spinner_1 = findViewById(R.id.spinner);
+            List<String> list = new ArrayList<String>();
+            list.add("Ipiranga");
+            list.add("Shell");
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner_1.setAdapter(adapter);
 
             kmAtual = findViewById(R.id.kmAtualPosto);
             Litros = findViewById(R.id.litrosAtualPosto);
