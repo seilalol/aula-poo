@@ -2,7 +2,7 @@ package com.example.vitor.a05_controle_abastecimento;
 
 import java.io.Serializable;
 
-public class Posto implements Serializable {
+public class Posto implements Serializable {//Classe posto para ser utilizada ao decorrer de todo codigo como base do mesmo
 
     private String posto;
     private String data;

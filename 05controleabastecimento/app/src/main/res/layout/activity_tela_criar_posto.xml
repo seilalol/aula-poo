@@ -42,7 +42,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="33dp"
-        android:inputType="number|numberSigned|numberDecimal"
+        android:inputType="number|numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
-        android:inputType="number|numberSigned|numberDecimal"
+        android:inputType="number|numberDecimal"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/dataAtualPosto" />

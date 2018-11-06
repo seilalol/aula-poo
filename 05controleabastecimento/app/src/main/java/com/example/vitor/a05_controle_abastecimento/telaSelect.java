@@ -23,13 +23,13 @@ public class telaSelect extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_tela_select);
+        setContentView(R.layout.activity_tela_select); //Daqui a baixo ativa as listas, e inflando elas no xml
         abastecimentoDAO start = new abastecimentoDAO();
 
         this.rvTotalPostos = findViewById(R.id.rvTotalPostos);
         this.postoAdapter = new abastecimentoAdapter();
 
-        this.postoAdapter.listaAvaliacoes = abastecimentoDAO.getLista(this.getApplicationContext());
+        this.postoAdapter.listaPostos = abastecimentoDAO.getLista(this.getApplicationContext());
         rvTotalPostos.setAdapter(this.postoAdapter);
 
         rvTotalPostos.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
@@ -37,21 +37,31 @@ public class telaSelect extends AppCompatActivity {
     }
 
 
-    public void criarNovo(View Objeto) {
-
-
+    public void criarNovo(View Objeto) { //Cria um novo objeto passando a km do objeto anterior
         try {
             Intent telaCriar = new Intent(this.getApplicationContext(), telaCriarPosto.class);
+            if (this.postoAdapter.listaPostos.size() == 0) {
+                telaCriar.putExtra("kmAtual", 0.0);
+            }
+            if (this.postoAdapter.listaPostos.size() > 0) {
+                double kmatual1 = this.postoAdapter.listaPostos.get(this.postoAdapter.listaPostos.size() - 1).getKmAtual();
+                telaCriar.putExtra("kmAtual", kmatual1);
+            }
             startActivityForResult(telaCriar, RC_ADICIONAR_POSTO);
         } catch (Exception e) {
         }
 
     }
 
+    public void voltar(View Objeto){ //Volta ao main
+        setResult(1);
+        finish();
+    }
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { //Atualiza as gavetas
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_ADICIONAR_POSTO) {
+        if (requestCode == RC_ADICIONAR_POSTO || resultCode == 1) {
 
             this.postoAdapter.notifyDataSetChanged();
         }

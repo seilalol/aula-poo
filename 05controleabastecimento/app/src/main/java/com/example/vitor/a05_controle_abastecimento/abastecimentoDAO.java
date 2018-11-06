@@ -13,14 +13,15 @@ public class abastecimentoDAO {
 
 
     private static ArrayList<Posto> AL_CACHE = new ArrayList<>();
-    private static final String NOME_ARQUIVO = "postos.txt";
+    private static final String NOME_ARQUIVO = "postosTesteDefinitivo3.txt";
     public static boolean salvar(Context c, Posto aSerSalva){
         AL_CACHE.add(aSerSalva);
         String postoEmString = "";
-        //postoEmString += aSerSalva.getConteudo() + ";";
+        //Salvar tudo num string que vai ser escrita num arquivo, sendo cada linha um objeto do tipo posto
         postoEmString += aSerSalva.getData() + ";";
         postoEmString += aSerSalva.getLitrosAbastecidos() + ";";
-        postoEmString += aSerSalva.getKmAtual() + "\n";
+        postoEmString += aSerSalva.getKmAtual() + ";";
+        postoEmString += aSerSalva.getPosto() + ";" + "\n";
         File refArquivo = new File( c.getFilesDir().getPath() + NOME_ARQUIVO );
         try {
             FileWriter escritor = new FileWriter(refArquivo, true);
@@ -32,7 +33,7 @@ public class abastecimentoDAO {
             return false;
         }
     }
-    public static ArrayList<Posto> getLista(Context c){
+    public static ArrayList<Posto> getLista(Context c){//Recarrega o arquivo lindo linha por linha, e divindo as linhas em partes pra definir novamente os atributos
         AL_CACHE = new ArrayList<>();
         File refArquivo = new File( c.getFilesDir().getPath() + NOME_ARQUIVO );
         try {
@@ -42,10 +43,11 @@ public class abastecimentoDAO {
             while((linhaPosto = leitorDeLinha.readLine()) != null){
                 String[] partesDaLinha = linhaPosto.split(";");
                 Posto daVez = new Posto();
-                //daVez.setConteudo( partesDaLinha[0] );
+
                 daVez.setData( partesDaLinha[0] );
                 daVez.setLitrosAbastecidos(Double.parseDouble(partesDaLinha[1]));
                 daVez.setKmAtual(Double.parseDouble(partesDaLinha[2]));
+                daVez.setPosto( partesDaLinha[3] );
                 AL_CACHE.add(daVez);
             }
         } catch (IOException e) {

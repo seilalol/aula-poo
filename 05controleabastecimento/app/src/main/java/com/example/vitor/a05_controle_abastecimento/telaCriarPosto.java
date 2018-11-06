@@ -6,33 +6,44 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class telaCriarPosto extends AppCompatActivity {
 
+    Spinner spinner_1;
+    List<String> list = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_criar_posto);
+        this.spinner_1 = findViewById(R.id.spinner);
+
+        this.list.add("Ipiranga");
+        this.list.add("Shell");
+        this.list.add("Texaco");
+        this.list.add("Petrobas");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getApplicationContext(), android.R.layout.simple_spinner_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.spinner_1.setAdapter(adapter);
     }
 
-    public void salvar(View view) {
+    public void salvar(View view) { //Faz as conversões necessarias e salva no arquivo DAO
         try {
-            EditText kmAtual, Litros, data;
-            Spinner spinner_1 = findViewById(R.id.spinner);
-            List<String> list = new ArrayList<String>();
-            list.add("Ipiranga");
-            list.add("Shell");
+            abastecimentoDAO salvar = new abastecimentoDAO();
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner_1.setAdapter(adapter);
+            EditText kmAtual, Litros, data;
 
             kmAtual = findViewById(R.id.kmAtualPosto);
             Litros = findViewById(R.id.litrosAtualPosto);
             data = findViewById(R.id.dataAtualPosto);
+
+
 
             String dataString = data.getText().toString();
             double litrosDouble = Double.parseDouble(Litros.getText().toString());
@@ -43,15 +54,18 @@ public class telaCriarPosto extends AppCompatActivity {
             novo.setLitrosAbastecidos(litrosDouble);
             novo.setKmAtual(kmDouble);
             novo.setData(dataString);
+            novo.setPosto(this.list.get(this.spinner_1.getSelectedItemPosition()));
 
-            abastecimentoDAO salvar = new abastecimentoDAO();
+            double kmAntigo = this.getIntent().getDoubleExtra("kmAtual",0); //So salva se o kmAntigo for menor que o km atual
+            if (kmAntigo < kmDouble || kmAntigo == 0) {
+                if (abastecimentoDAO.salvar(this.getApplicationContext(), novo) == true) {
+                    setResult(1);
+                    finish();
+                }
+            }else {
+                    kmAtual.setError("Precisa ser maior que o KM anterior.");
 
-
-
-            if(abastecimentoDAO.salvar(this.getApplicationContext(), novo)==true) {
-                setResult(1);
-                finish();
-            }
+                }
 
         } catch (Exception e) {
 
