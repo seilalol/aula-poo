@@ -13,7 +13,7 @@ public class abastecimentoDAO {
 
 
     private static ArrayList<Posto> AL_CACHE = new ArrayList<>();
-    private static final String NOME_ARQUIVO = "postosTesteDefinitivo3.txt";
+    private static final String NOME_ARQUIVO = "postosPronto.txt";
     public static boolean salvar(Context c, Posto aSerSalva){
         AL_CACHE.add(aSerSalva);
         String postoEmString = "";
