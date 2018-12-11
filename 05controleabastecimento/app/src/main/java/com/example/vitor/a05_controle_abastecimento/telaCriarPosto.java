@@ -81,9 +81,7 @@ public class telaCriarPosto extends AppCompatActivity {
                 }
             }else {
                     kmAtual.setError("Precisa ser maior que o KM anterior.");
-
                 }
-
         } catch (Exception e) {
 
 

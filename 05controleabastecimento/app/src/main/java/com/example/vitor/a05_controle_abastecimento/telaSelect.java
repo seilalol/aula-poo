@@ -48,7 +48,7 @@ public class telaSelect extends AppCompatActivity {
                 telaCriar.putExtra("kmAtual", kmatual1);
             }
             startActivityForResult(telaCriar, RC_ADICIONAR_POSTO);
-        } catch (Exception e) {
+            } catch (Exception e) {
         }
 
     }
@@ -68,6 +68,6 @@ public class telaSelect extends AppCompatActivity {
     }
     public void maps(View v){
         Intent maps = new Intent(this.getApplicationContext(),MapsActivity.class);
-        startActivityForResult(maps,17);
+        startActivityForResult(maps,RC_ADICIONAR_POSTO);
     }
 }

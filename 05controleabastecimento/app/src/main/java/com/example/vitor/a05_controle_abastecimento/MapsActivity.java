@@ -20,10 +20,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_maps2);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.map2);
         mapFragment.getMapAsync(this);
     }
 
@@ -50,7 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Posto posto = novo.listaPostos.get(i);
                     LatLng add = new LatLng(posto.getLatitude(), posto.getLongitude());
 
-                    mMap.addMarker(new MarkerOptions().position(add).title("Posto abastecido"));
+                    mMap.addMarker(new MarkerOptions().position(add).title("Posto abastecido: " + posto.getPosto() + " Km:" + posto.getKmAtual() + " Litros: " + posto.getLitrosAbastecidos()));
                     ultimo = i;
                     }
             LatLng centralizar = new LatLng(novo.listaPostos.get(ultimo).getLatitude(), novo.listaPostos.get(ultimo).getLongitude());
@@ -58,5 +58,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }catch (Exception e){}
 
     }
+    public void voltar1(View v){
 
+        setResult(1);
+        finish();
+
+    }
 }
