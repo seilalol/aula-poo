@@ -8,6 +8,7 @@ public class Posto implements Serializable {//Classe posto para ser utilizada ao
     private String data;
     private double kmAtual;
     private double litrosAbastecidos;
+    private String Coordenadas;
 
 
     public String getPosto() {
@@ -40,5 +41,13 @@ public class Posto implements Serializable {//Classe posto para ser utilizada ao
 
     public void setLitrosAbastecidos(double litrosAbastecidos) {
         this.litrosAbastecidos = litrosAbastecidos;
+    }
+
+    public String getCoordenadas() {
+        return Coordenadas;
+    }
+
+    public void setCoordenadas(String coordenadas) {
+        Coordenadas = coordenadas;
     }
 }

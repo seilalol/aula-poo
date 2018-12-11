@@ -1,5 +1,7 @@
 package com.example.vitor.a05_controle_abastecimento;
 
+import android.location.Location;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +13,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
 public class telaCriarPosto extends AppCompatActivity {
 
     Spinner spinner_1;
     List<String> list = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,8 @@ public class telaCriarPosto extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getApplicationContext(), android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.spinner_1.setAdapter(adapter);
+
+
     }
 
     public void salvar(View view) { //Faz as conversões necessarias e salva no arquivo DAO
@@ -45,6 +52,7 @@ public class telaCriarPosto extends AppCompatActivity {
 
 
 
+
             String dataString = data.getText().toString();
             double litrosDouble = Double.parseDouble(Litros.getText().toString());
             double kmDouble = Double.parseDouble(kmAtual.getText().toString());
@@ -55,6 +63,12 @@ public class telaCriarPosto extends AppCompatActivity {
             novo.setKmAtual(kmDouble);
             novo.setData(dataString);
             novo.setPosto(this.list.get(this.spinner_1.getSelectedItemPosition()));
+            requesPermission();
+
+                GPSProvider g = new GPSProvider(getApplicationContext());
+                Location l = g.getLocation();
+
+                    novo.setCoordenadas(l.getLatitude() + "|" + l.getLongitude()+"");
 
             double kmAntigo = this.getIntent().getDoubleExtra("kmAtual",0); //So salva se o kmAntigo for menor que o km atual
             if (kmAntigo < kmDouble || kmAntigo == 0) {
@@ -73,5 +87,9 @@ public class telaCriarPosto extends AppCompatActivity {
         }
 
 
+    }
+    public void requesPermission(){
+
+        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION},1);
     }
 }

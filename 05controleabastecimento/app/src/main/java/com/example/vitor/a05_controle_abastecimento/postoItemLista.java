@@ -6,8 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class postoItemLista extends AppCompatActivity {
-    private TextView postoView;
-    private ImageView posto;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

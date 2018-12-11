@@ -12,6 +12,7 @@ public class abastecimentoViewHolder extends RecyclerView.ViewHolder {
     private TextView dataAbastecimento;
     private ImageView posto;
     private TextView postoView;
+    private TextView Coord;
 
     public abastecimentoViewHolder(View itemView) {
 
@@ -21,12 +22,14 @@ public class abastecimentoViewHolder extends RecyclerView.ViewHolder {
         this.dataAbastecimento = itemView.findViewById(R.id.dataAbastecimento);
         this.posto = (ImageView) itemView.findViewById(R.id.postoImg);
         this.postoView = itemView.findViewById(R.id.postoT);
+        this.Coord = itemView.findViewById(R.id.Coordenadas);
 
     }
     public void atualizaGaveta(Posto objetoPosto){ //Apenas atualiza a gaveta
         this.kmAtual.setText("" + objetoPosto.getKmAtual() );
         this.litrosAbastecido.setText("" + objetoPosto.getLitrosAbastecidos() + " Litros" );
         this.dataAbastecimento.setText( objetoPosto.getData() );
+        this.Coord.setText(objetoPosto.getCoordenadas());
         this.postoView.setText(objetoPosto.getPosto());
 
         if("Ipiranga".equals(objetoPosto.getPosto())) {
