@@ -24,10 +24,8 @@ public class GPSProvider extends Activity implements LocationListener {
 
     public Location getLocation(){
 
-        if(ContextCompat.checkSelfPermission(context, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(context, "Permissao nao consedida", Toast.LENGTH_LONG).show();
-            return null;
-        }
+        if(ContextCompat.checkSelfPermission(context, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED);
+
         LocationManager lc = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
         boolean isEnable = lc.isProviderEnabled(LocationManager.GPS_PROVIDER);
         if(isEnable){

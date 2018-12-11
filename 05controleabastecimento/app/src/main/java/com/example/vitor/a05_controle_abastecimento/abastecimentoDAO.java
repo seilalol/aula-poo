@@ -22,7 +22,8 @@ public class abastecimentoDAO {
         postoEmString += aSerSalva.getLitrosAbastecidos() + ";";
         postoEmString += aSerSalva.getKmAtual() + ";";
         postoEmString += aSerSalva.getPosto() + ";";
-        postoEmString += aSerSalva.getCoordenadas() + ";" + "\n";
+        postoEmString += aSerSalva.getLatitude() + ";";
+        postoEmString += aSerSalva.getLongitude() + ";" + "\n";
         File refArquivo = new File( c.getFilesDir().getPath() + NOME_ARQUIVO );
         try {
             FileWriter escritor = new FileWriter(refArquivo, true);
@@ -49,7 +50,8 @@ public class abastecimentoDAO {
                 daVez.setLitrosAbastecidos(Double.parseDouble(partesDaLinha[1]));
                 daVez.setKmAtual(Double.parseDouble(partesDaLinha[2]));
                 daVez.setPosto( partesDaLinha[3] );
-                daVez.setCoordenadas( partesDaLinha[4] );
+                daVez.setLatitude( Double.parseDouble(partesDaLinha[4] ));
+                daVez.setLongitude(Double.parseDouble(partesDaLinha[5]));
                 AL_CACHE.add(daVez);
             }
         } catch (IOException e) {

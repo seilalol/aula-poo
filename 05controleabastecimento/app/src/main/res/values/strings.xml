@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">05-controle-abastecimento</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

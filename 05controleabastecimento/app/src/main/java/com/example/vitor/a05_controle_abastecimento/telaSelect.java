@@ -62,9 +62,12 @@ public class telaSelect extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { //Atualiza as gavetas
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_ADICIONAR_POSTO || resultCode == 1) {
-
             this.postoAdapter.notifyDataSetChanged();
         }
 
+    }
+    public void maps(View v){
+        Intent maps = new Intent(this.getApplicationContext(),MapsActivity.class);
+        startActivityForResult(maps,17);
     }
 }
